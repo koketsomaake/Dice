@@ -1,10 +1,11 @@
-public class Die{
+import java.lang.reflect.Array;
+import java.util.Arrays;
 
+public class Die{
     public int sides;
     int values = 0;
     int[] probabilities;
-    private int integer;
-
+    Integer integer = new Integer(sides);
     //Create the constructor for Die
     //to define the number of sides the die class would have
     //Extend the constructor of Die class  so
@@ -13,12 +14,6 @@ public class Die{
     public Die(int numberOfSides, int... probabilities){
         sides = numberOfSides;
         this.probabilities = probabilities;
-    }
-
-    public void setProbabilities(int[] probabilities){
-        this.probabilities = probabilities;
-        Die theDice = new Die(sides);
-        theDice.roll();
     }
     //Create a method to return a
     // random number between 1 and the number of sides
@@ -29,11 +24,9 @@ public class Die{
             int sum = 0;
             for (int value :probabilities) {
                 sum+=value;
-
                 if (value < 0){
                     System.out.println("negative probabilities not allowed");
                 }
-
                 if ((value < 1)){
                     System.out.println("probability sum must be greater than 0");
                 }
@@ -51,7 +44,7 @@ public class Die{
                  else{
                        percentages[i] = chances;
                  }
-                System.out.println(percentages[i]);
+//                System.out.println("Weighted Dice:" + percentages[i]);
             }
             // create a random variable,
             //Then compare the random variable with
@@ -68,5 +61,14 @@ public class Die{
         }
         return values;
     }
+
+    public void setProbabilities(int[] probabilities){
+        this.probabilities = probabilities;
+        Die theDice = new Die(sides);
+        theDice.roll();
     }
 
+    public boolean equals(Die obj) {
+        return equals(obj);
+    }
+}
